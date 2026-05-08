@@ -91,7 +91,12 @@ def load_data():
     # Convert Date columns to datetime
     train_df['Date'] = pd.to_datetime(train_df['Date'])
     features_df['Date'] = pd.to_datetime(features_df['Date'])
-    
+
+    # Shift dates forward 13 years: 2010-2012 → 2023-2025
+    offset = pd.DateOffset(years=13)
+    train_df['Date']    = train_df['Date']    + offset
+    features_df['Date'] = features_df['Date'] + offset
+
     # Merge train with stores info
     df = train_df.merge(stores_df[['Store', 'Type', 'Size']], on='Store', how='left')
     
