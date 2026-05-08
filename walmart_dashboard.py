@@ -90,7 +90,6 @@ def load_data():
     
     # Convert Date columns to datetime
     train_df['Date'] = pd.to_datetime(train_df['Date'])
-    stores_df['Date'] = pd.to_datetime(stores_df['Date'])
     features_df['Date'] = pd.to_datetime(features_df['Date'])
     
     # Merge train with stores info
